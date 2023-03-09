@@ -1,6 +1,12 @@
 create database datingappdb;
 use datingappdb;
 
+Create table genders(
+gender_id int(16) not null,
+gender_ref varchar(32) ,
+primary key(gender_id)
+);
+
 
 CREATE TABLE users (
     userID int(11) NOT NULL AUTO_INCREMENT,
