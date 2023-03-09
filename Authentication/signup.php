@@ -19,6 +19,11 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
             "error" => "unvalid email"
         ]);
         die();
+    }else if(!is_strong_password($password)){
+        echo json_encode([
+            "error" => "the password isn't strong enough! please make sure to follow the following criteria when choosing a strong pass: \n\n 1- The password should contain at least one capital letter.\n\n 2- The password should contain at least one special character. \n\n 3- The password should contain at least one number. \n\n 4- The password should consist of 8 characters at least."
+        ]);
+        die();
     }
     if(isset($_POST["age"])){
         $age = $_POST["age"];
