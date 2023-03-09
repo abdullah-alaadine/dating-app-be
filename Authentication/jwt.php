@@ -19,4 +19,9 @@ class HandleJWT {
     public static function decode_JWT_token($token){
         return JWT::decode($token, new Key(self::$key, self::$algorithm));
     }
+
+    public static function getKey(){
+        return self::$key;
+    }
+    
 }
