@@ -31,3 +31,14 @@ foreign key(userID) references users(userID),
 foreign key(gender_d) references genders(gender_id)
 
 );
+
+
+
+create table user_likes(
+id int(11) auto_increment not null,
+userID int(11) not null,
+liked_user_id int(11) not null,
+primary key(id),
+foreign key(userID) references users(userid),
+foreign key(liked_user_id) references users(userid)
+);
