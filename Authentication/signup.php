@@ -29,6 +29,11 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
             "error" => "unvalid name"
         ]);
         die();
+    }else if($gender != "male" && $gender != "female" && $gender != "other"){
+        echo json_encode([
+            "error" => "unvalid gender"
+        ]);
+        die();
     }
     if(isset($_POST["age"])){
         $age = $_POST["age"];
