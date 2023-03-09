@@ -11,7 +11,7 @@ include("../Validation/formValidation.php");
 if(isset($_POST["email"]) && isset($_POST["password"])){
     $email = to_be_safe($_POST["email"]);
     $password = to_be_safe($_POST["password"]);
-    $query = "SELECT `email` FROM `users` WHERE `email` = '".$email."'";
+    $query = "SELECT `email`,`password` FROM `users` WHERE `email` = '".$email."'";
     $result = $connection->query($query);
     if ($result->num_rows > 0){
         $data = $result->fetch_assoc();
@@ -21,6 +21,10 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
             ]);
             die();
         }
+        echo json_encode([
+            "token" => HandleJWT::get_JWT_token([$data["email"]]),
+            "user" => $data["email"]
+        ]);
     } else {
         echo json_encode([
             "error" => "incorrect data"
