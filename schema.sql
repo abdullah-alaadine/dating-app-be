@@ -13,7 +13,7 @@ CREATE TABLE users (
     email varchar(128) not null,
     password text(512) not null,
     lastname varchar(255),
-    fistname varchar(255) NOT NUlL,
+    fisrtname varchar(255) NOT NUlL,
     age int,
     country varchar(64) not null,
     gender_id int(16) not null,
@@ -45,4 +45,4 @@ foreign key(liked_user_id) references users(userid)
 
 
 ALTER TABLE users
-ADD bio text(256);
+ADD bio text(256);a
