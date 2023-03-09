@@ -8,4 +8,10 @@ include("../database.php");
 include("../Authentication/jwt.php");
 include("../Validation/formValidation.php");
 
+if(isset($_POST["email"]) && isset($_POST["password"])){
 
+}else{
+    echo json_encode([
+        "error" => "Some uninserted fields are required!"
+    ]);
+}
