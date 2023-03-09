@@ -25,9 +25,16 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
         $gender_id = 3;
     }
 
-    $sql_query = "INSERT INTO users (email, password, firstname, lastname, age, country, gender_id) VALUES (" . $email . ',' . $password . ',' . $firstName . "," . $lastName . "," . $age . "," . $country . "," . $gender_id . ")";
+    $sql_query = $connection->prepare("INSERT INTO users (email, password, fistname, lastname, age, country, gender_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $sql_query->bind_param("ssssisi", $email, $password, $firstName, $lastName, $age, $country, $gender_id);
 
-    if (!$conn->query($sql)) {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+    if($sql_query->execute()){
+        echo "all done!";
+    }else{
+        "\t :( \t";
     }
+}else{
+    echo json_encode([
+        "error" => "Some uninserted fields are required!"
+    ]);
 }
