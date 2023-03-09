@@ -45,4 +45,4 @@ foreign key(liked_user_id) references users(userid)
 
 
 ALTER TABLE users
-ADD bio text(256);a
+ADD bio text(256);
