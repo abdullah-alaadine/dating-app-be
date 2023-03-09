@@ -16,7 +16,7 @@ function is_number($data){
 }
 
 function valid_name($data){
-    if (!preg_match ("/^[a-zA-z]*$/", $name) ) {  
+    if (!preg_match ("/^[a-zA-z]*$/", $data) ) {  
         return false; 
     }
     return true;

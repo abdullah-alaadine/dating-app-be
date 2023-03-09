@@ -2,6 +2,7 @@
 
 include("../database.php");
 include("../Validation/formValidation.php");
+include("../Authentication/jwt.php");
 
 session_start();
 if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstName"])
@@ -66,7 +67,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
     ];
     if($sql_query->execute()){
         echo json_encode( [
-            "token" => JWT::get_JWT_token($data["email"]),
+            "token" => HandleJWT::get_JWT_token([$data["email"]]),
             "user" => $data
         ]);
     }else{
