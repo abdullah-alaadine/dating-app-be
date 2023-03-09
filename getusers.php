@@ -8,10 +8,12 @@ include('connection.php');
 
 
 $user_email = $_GET['email'];
-$sql = "SELECT gender_id FROM user_preference WHERE userID = (SELECT userID FROM users WHERE email = '$main_user_email')";
+$sql = "SELECT gender_id FROM user_preference WHERE userID = (SELECT userID FROM users WHERE email LIKE '$user_email')";
 $result = mysqli_query($conn, $sql);
+echo "success";
 $preference = mysqli_fetch_assoc($result);
 $preference_id = $preference['gender_id'];
+
 
 // get users that match user's gender preference.
 $sql = "SELECT * FROM users WHERE gender_id = $preference_id";
