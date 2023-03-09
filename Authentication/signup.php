@@ -29,7 +29,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
             "error" => "unvalid name"
         ]);
         die();
-    }else if($gender != "male" && $gender != "female" && $gender != "other"){
+    }else if($gender != "male" && $gender != "female"){
         echo json_encode([
             "error" => "unvalid gender"
         ]);
@@ -51,9 +51,8 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
         $gender_id = 1;
     }elseif( $gender == "female" ){
         $gender_id = 2;
-    }else{
-        $gender_id = 3;
     }
+
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
     $sql_query = $connection->prepare("INSERT INTO users (email, password, fistname, lastname, age, country, gender_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $sql_query->bind_param("ssssisi", $email, $hashed_password, $firstName, $lastName, $age, $country, $gender_id);
@@ -70,3 +69,5 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
         "error" => "Some uninserted fields are required!"
     ]);
 }
+
+
