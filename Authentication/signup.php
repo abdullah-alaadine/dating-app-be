@@ -26,7 +26,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
     }
 
     $sql_query = $connection->prepare("INSERT INTO users (email, password, fistname, lastname, age, country, gender_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $sql_query->bind_param("ssssisi", $email, $password, $firstName, $lastName, $age, $country, $gender_id);
+    $sql_query->bind_param("ssssisi", $email, password_hash($password, PASSWORD_BCRYPT), $firstName, $lastName, $age, $country, $gender_id);
 
     if($sql_query->execute()){
         echo "all done!";
