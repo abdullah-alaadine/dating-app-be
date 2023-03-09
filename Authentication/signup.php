@@ -36,10 +36,16 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
         die();
     }
     if(isset($_POST["age"])){
-        $age = $_POST["age"];
+        $age = to_be_safe($_POST["age"]);
     }
     if(isset($_POST["lastName"])){
         $lastName = $_POST["lastName"];
+        if(!valid_name($lastName)){
+            echo json_encode([
+                "error" => "unvalid name"
+            ]);
+            die();
+        }
     }
     if($gender == "male"){
         $gender_id = 1;
