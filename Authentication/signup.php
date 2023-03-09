@@ -39,9 +39,13 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
         ]);
         die();
     }
-    $check_if_email_exists = $connection->prepare("SELECT email FROM users WHERE email = ?");
-    $check_if_email_exists->bind_param("s", $email);
-    
+    $select = mysqli_query($connection, "SELECT `email` FROM `users` WHERE `email` = '".$email."'");
+    if(mysqli_num_rows($select)) {
+        echo json_encode([
+            "error" => "This email is already being used!"
+        ]);
+        die();
+    }
     if(isset($_POST["age"])){
         $age = to_be_safe($_POST["age"]);
     }
