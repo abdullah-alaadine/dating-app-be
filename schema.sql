@@ -10,7 +10,7 @@ primary key(gender_id)
 
 CREATE TABLE users (
     userID int(11) NOT NULL AUTO_INCREMENT,
-    email varchar(128) not null,
+    email varchar(128) not null UNIQUE,
     password text(512) not null,
     lastname varchar(255),
     firstname varchar(255) NOT NUlL,
