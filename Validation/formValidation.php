@@ -1,4 +1,5 @@
 <?php 
+header("Access-Control-Allow-Origin: *");
 
 // prevent Cross-Site Scripting attacks
 function to_be_safe($input) {

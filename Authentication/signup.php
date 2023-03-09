@@ -1,10 +1,13 @@
-            <?php
+<?php
 
 include("../database.php");
 include("../Validation/formValidation.php");
 include("../Authentication/jwt.php");
 
-session_start();
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+header('Content-Type: application/json; charset=utf-8');
+
 if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstName"])
 && isset($_POST["country"]) && isset($_POST["gender"])){
     $email = to_be_safe($_POST["email"]);
@@ -36,6 +39,9 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
         ]);
         die();
     }
+    $check_if_email_exists = $connection->prepare("SELECT email FROM users WHERE email = ?");
+    $check_if_email_exists->bind_param("s", $email);
+    
     if(isset($_POST["age"])){
         $age = to_be_safe($_POST["age"]);
     }

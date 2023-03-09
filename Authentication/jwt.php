@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+header("Access-Control-Allow-Origin: *");
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
