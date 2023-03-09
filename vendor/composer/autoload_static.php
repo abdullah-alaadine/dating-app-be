@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit3efec3f07c0f9ef67a67f01b00e8cab4
 {
+    public static $files = array (
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'F' => 
         array (
