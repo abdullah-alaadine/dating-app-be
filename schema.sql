@@ -1,5 +1,5 @@
-create database datingappdb;
-use datingappdb;
+create database dating_app_db;
+use dating_app_db;
 
 Create table genders(
 gender_id int(16) not null,
@@ -28,7 +28,7 @@ userID int(11) not null,
 gender_id int(16) not null,
 primary key (id),
 foreign key(userID) references users(userID),
-foreign key(gender_d) references genders(gender_id)
+foreign key(gender_id) references genders(gender_id)
 
 );
 
