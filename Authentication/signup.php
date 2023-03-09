@@ -56,18 +56,26 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
     $sql_query = $connection->prepare("INSERT INTO users (email, password, fistname, lastname, age, country, gender_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $sql_query->bind_param("ssssisi", $email, $hashed_password, $firstName, $lastName, $age, $country, $gender_id);
-
+    $data = [
+        "firstName" => $firstName,
+        "lastName" => $lastName,
+        "email" => $email,
+        "country" => $country,
+        "age" => $age,
+        "gender" => $gender
+    ];
     if($sql_query->execute()){
         echo json_encode( [
-            "batata" => "potato"
+            "token" => JWT::get_JWT_token($data["email"]),
+            "user" => $data
         ]);
     }else{
-        
+        echo json_encode( [
+            "error" => "something went wrong!"
+        ]);
     }
 }else{
     echo json_encode([
         "error" => "Some uninserted fields are required!"
     ]);
 }
-
-
