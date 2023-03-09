@@ -14,3 +14,14 @@ CREATE TABLE users (
     PRIMARY KEY (userid),
     foreign key(gender_id) References genders(gender_id)
 );
+
+
+create table user_preference (
+id int(11) auto_increment not null,
+userID int(11) not null,
+gender_id int(16) not null,
+primary key (id),
+foreign key(userID) references users(userID),
+foreign key(gender_d) references genders(gender_id)
+
+);
