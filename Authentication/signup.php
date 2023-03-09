@@ -30,15 +30,9 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
     $sql_query->bind_param("ssssisi", $email, password_hash($password, PASSWORD_BCRYPT), $firstName, $lastName, $age, $country, $gender_id);
 
     if($sql_query->execute()){
-        $_SESSION["logged_in"] = true;
-        echo json_encode([
-            "logged_in" => true
-        ]);
+        
     }else{
-        $_SESSION["logged_in"] = false;
-        echo json_encode([
-            "error" => "creating new user process is failed!"
-        ]);
+        
     }
 }else{
     echo json_encode([
