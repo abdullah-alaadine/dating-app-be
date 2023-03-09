@@ -42,3 +42,7 @@ primary key(id),
 foreign key(userID) references users(userid),
 foreign key(liked_user_id) references users(userid)
 );
+
+
+ALTER TABLE users
+ADD bio text(256);
