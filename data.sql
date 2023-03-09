@@ -2,7 +2,7 @@ INSERT INTO genders (gender_id, gender_ref)
 VALUES (1, 'Male'), (2, 'Female'), (3, 'Non-binary');
 
 
-INSERT INTO users (email, password, lname, fname, age, country, gender_id, bio)
+INSERT INTO users (email, password, lastname, firstname, age, country, gender_id, bio)
 VALUES 
 ('user1@example.com', 'password1', 'Smith', 'John', 28, 'United States', 1, 'I am a software engineer.'),
 ('user2@example.com', 'password2', 'Johnson', 'Emily', 32, 'Canada', 2, 'I love hiking and exploring new places.'),
