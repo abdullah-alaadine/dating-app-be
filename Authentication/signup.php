@@ -1,18 +1,20 @@
             <?php
 
 include("../database.php");
+include("../Validation/formValidation.php");
+
 session_start();
 if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstName"])
 && isset($_POST["country"]) && isset($_POST["gender"])){
-    
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $firstName = $_POST["firstName"];
-    $country = $_POST["country"];
-    $gender = $_POST["gender"];
+    $email = to_be_safe($_POST["email"]);
+    $password = to_be_safe($_POST["password"]);
+    $firstName = to_be_safe($_POST["firstName"]);
+    $country = to_be_safe($_POST["country"]);
+    $gender = to_be_safe($_POST["gender"]);
     $age = null;
     $lastName = null;
     $gender_id = null;
+    if(!valid_email()){}
     if(isset($_POST["age"])){
         $age = $_POST["age"];
     }
