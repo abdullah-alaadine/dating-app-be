@@ -1,8 +1,9 @@
 <?php
 
 include("../database.php");
-
-if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstName"]) && isset($_POST["country"]) && isset($_POST["gender"])){
+session_start();
+if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstName"])
+&& isset($_POST["country"]) && isset($_POST["gender"])){
     $email = $_POST["email"];
     $password = $_POST["password"];
     $firstName = $_POST["firstName"];
@@ -29,9 +30,15 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
     $sql_query->bind_param("ssssisi", $email, password_hash($password, PASSWORD_BCRYPT), $firstName, $lastName, $age, $country, $gender_id);
 
     if($sql_query->execute()){
-        echo "all done!";
+        $_SESSION["logged_in"] = true;
+        echo json_encode([
+            "logged_in" => true
+        ]);
     }else{
-        "\t :( \t";
+        $_SESSION["logged_in"] = false;
+        echo json_encode([
+            "error" => "creating new user process is failed!"
+        ]);
     }
 }else{
     echo json_encode([
