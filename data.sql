@@ -14,3 +14,18 @@ VALUES
 ('user8@example.com', 'password8', 'Taylor', 'Ashley', 27, 'Australia', 2, 'I am a graphic designer and enjoy art.'),
 ('user9@example.com', 'password9', 'Brown', 'Jacob', 23, 'New Zealand', 1, 'I am a fitness instructor and love to workout.'),
 ('user10@example.com', 'password10', 'Kim', 'Min', 25, 'South Korea', 3, 'I am a writer and enjoy reading and learning new things.');
+
+
+
+INSERT INTO user_preference (userID, gender_id)
+VALUES 
+(1, 2), (1, 3), 
+(2, 1), (2, 3),
+(3, 2), (3, 3),
+(4, 1), (4, 3),
+(5, 1), (5, 2),
+(6, 2), (6, 3),
+(7, 2), (7, 3),
+(8, 1), (8, 3),
+(9, 2), (9, 3),
+(10, 1), (10, 2);
