@@ -14,7 +14,12 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
     $age = null;
     $lastName = null;
     $gender_id = null;
-    if(!valid_email()){}
+    if(!valid_email($email)){
+        echo json_encode([
+            "error" => "unvalid email"
+        ]);
+        die();
+    }
     if(isset($_POST["age"])){
         $age = $_POST["age"];
     }

@@ -31,11 +31,11 @@ function valid_email($email){
 }
 
 function is_strong_password($pwd){
-    $uppercase = preg_match('@[A-Z]@', $password);
-    $lowercase = preg_match('@[a-z]@', $password);
-    $number    = preg_match('@[0-9]@', $password);
-    $specialChars = preg_match('@[^\w]@', $password);
-    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+    $uppercase = preg_match('@[A-Z]@', $pwd);
+    $lowercase = preg_match('@[a-z]@', $pwd);
+    $number    = preg_match('@[0-9]@', $pwd);
+    $specialChars = preg_match('@[^\w]@', $pwd);
+    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($pwd) < 8) {
         return false;
     }
     return true;
