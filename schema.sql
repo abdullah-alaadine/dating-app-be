@@ -13,7 +13,7 @@ CREATE TABLE users (
     email varchar(128) not null,
     password text(512) not null,
     lastname varchar(255),
-    fisrtname varchar(255) NOT NUlL,
+    firstname varchar(255) NOT NUlL,
     age int,
     country varchar(64) not null,
     gender_id int(16) not null,
