@@ -23,5 +23,7 @@ class HandleJWT {
     public static function getKey(){
         return self::$key;
     }
-    
+    public static function getAlgorithm(){
+        return self::$algorithm;
+    }
 }
