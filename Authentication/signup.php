@@ -1,4 +1,7 @@
-            <?php
+<?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Headers: *');
 
 include("../database.php");
 include("../Validation/formValidation.php");
@@ -22,7 +25,7 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
         die(); // equivalent to exit()
     }else if(!is_strong_password($password)){
         echo json_encode([
-            "error" => "the password isn't strong enough! please make sure to follow the following criteria when choosing a strong pass: \n\n 1- The password should contain at least one capital letter.\n\n 2- The password should contain at least one special character. \n\n 3- The password should contain at least one number. \n\n 4- The password should consist of 8 characters at least."
+            "error" => "the password isn't strong enough! please make sure to follow the following criteria when choosing a strong pass: \n\n 1- The password should contain at least one capital letter.\n\n 2- The password should contain at least one special character. \n\n 3- The password should contain at least one number. \n\n 4- The password should consist of 8 characters at least.";
         ]);
         die();
     }else if(!valid_name($firstName)){
@@ -80,3 +83,4 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
         "error" => "Some uninserted fields are required!"
     ]);
 }
+?>
