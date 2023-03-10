@@ -1,4 +1,5 @@
 <?php 
+header("Access-Control-Allow-Origin: http://127.0.0.1:5500");
 
 // prevent Cross-Site Scripting attacks
 function to_be_safe($input) {

@@ -1,13 +1,13 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Credentials: true');
-header('Access-Control-Allow-Headers: *');
 
 include("../database.php");
 include("../Validation/formValidation.php");
 include("../Authentication/jwt.php");
 
-session_start();
+header("Access-Control-Allow-Origin: http://127.0.0.1:5500");
+header("Access-Control-Allow-Headers: *");
+header('Content-Type: application/json; charset=utf-8');
+
 if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstName"])
 && isset($_POST["country"]) && isset($_POST["gender"])){
     $email = to_be_safe($_POST["email"]);
@@ -36,6 +36,13 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["firstNam
     }else if($gender != "male" && $gender != "female"){
         echo json_encode([
             "error" => "unvalid gender"
+        ]);
+        die();
+    }
+    $select = mysqli_query($connection, "SELECT `email` FROM `users` WHERE `email` = '".$email."'");
+    if(mysqli_num_rows($select)) {
+        echo json_encode([
+            "error" => "This email is already being used!"
         ]);
         die();
     }

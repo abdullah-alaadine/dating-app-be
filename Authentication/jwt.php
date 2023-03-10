@@ -1,6 +1,8 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+header("Access-Control-Allow-Origin: http://127.0.0.1:5500");
+
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -16,5 +18,12 @@ class HandleJWT {
 
     public static function decode_JWT_token($token){
         return JWT::decode($token, new Key(self::$key, self::$algorithm));
+    }
+
+    public static function getKey(){
+        return self::$key;
+    }
+    public static function getAlgorithm(){
+        return self::$algorithm;
     }
 }
